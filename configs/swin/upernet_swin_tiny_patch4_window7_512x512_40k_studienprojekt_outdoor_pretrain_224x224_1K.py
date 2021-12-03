@@ -1,6 +1,6 @@
 _base_ = [
-    '../_base_/models/upernet_swin.py', '../_base_/datasets/ade20k.py',
-    '../_base_/default_runtime.py', '../_base_/schedules/schedule_160k.py'
+    '../_base_/models/upernet_swin.py', '../_base_/datasets/studienprojekt_outdoor.py',
+    '../_base_/default_runtime.py', '../_base_/schedules/schedule_40k.py'
 ]
 model = dict(
     pretrained='pretrain/swin_tiny_patch4_window7_224.pth',
@@ -12,8 +12,8 @@ model = dict(
         use_abs_pos_embed=False,
         drop_path_rate=0.3,
         patch_norm=True),
-    decode_head=dict(in_channels=[96, 192, 384, 768], num_classes=150),
-    auxiliary_head=dict(in_channels=384, num_classes=150))
+    decode_head=dict(in_channels=[96, 192, 384, 768], num_classes=21),
+    auxiliary_head=dict(in_channels=384, num_classes=21))
 
 # AdamW optimizer, no weight decay for position embedding & layer norm
 # in backbone
